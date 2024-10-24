@@ -1,13 +1,14 @@
-from enum import Enum
-from datetime import datetime
 import logging
 import re
-from pathlib import Path
 import io
-
+import json
+import os
 import dr_util.file_utils as fu
-
 import bytom.arxiv_utils as xu
+
+from enum import Enum
+from datetime import datetime
+from pathlib import Path
 
 
 class SUMMARY_SOURCE(Enum):
@@ -20,6 +21,20 @@ class SUMMARY_FORMAT(Enum):
     MARKDOWN = 1
     # JSON = 2
 
+# --- Create bio data json--- #
+
+def save_info_json(
+    cfg, names_info
+):
+    # Convert to JSON
+    json_output = json.dumps(names_info, indent=4)
+
+    # Create the directory if it doesn't exist
+    os.makedirs(os.path.dirname(f"{cfg.author_info_file}"), exist_ok=True)
+
+    # Save to a file
+    with open(f"{cfg.author_info_file}", 'w') as json_file:
+        json.dump(names_info, json_file, indent=4)
 
 # --- Info Gathering Functions --- #
 
@@ -126,6 +141,9 @@ def write_author_page(
     )
     author_str = author.lower().replace(" ", "_")
     fl_only = ".flonly" if first_last_only else ""
+    os.makedirs(os.path.dirname(f"{cfg.author_summaries_dir}"), exist_ok=True)
+
+    f"{cfg.author_summaries_dir}{author_str}.markdown."
     fu.dump_file(
         author_page,
         f"{cfg.author_summaries_dir}{author_str}.markdown."
