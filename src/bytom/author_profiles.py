@@ -34,7 +34,7 @@ def save_info_json(cfg, names_info):
 
     # Save to a file
     with open(f"{cfg.author_info_file}", "w") as json_file:
-        json.dump(names_info, json_file, indent=4)
+        json.dump(json_output, json_file, indent=4)
 
 
 # --- Info Gathering Functions --- #
