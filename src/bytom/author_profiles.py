@@ -143,7 +143,6 @@ def write_author_page(
     fl_only = ".flonly" if first_last_only else ""
     os.makedirs(os.path.dirname(f"{cfg.author_summaries_dir}"), exist_ok=True)
 
-    f"{cfg.author_summaries_dir}{author_str}.markdown."
     fu.dump_file(
         author_page,
         f"{cfg.author_summaries_dir}{author_str}.markdown."
