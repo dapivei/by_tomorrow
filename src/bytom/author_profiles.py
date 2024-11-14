@@ -33,8 +33,7 @@ def save_info_json(cfg, names_info):
     os.makedirs(os.path.dirname(f"{cfg.author_info_file}"), exist_ok=True)
 
     # Save to a file
-    with open(f"{cfg.author_info_file}", "w") as json_file:
-        json.dump(json_output, json_file, indent=4)
+    fu.dump_file(json_output, cfg.author_info_file)
 
 
 # --- Info Gathering Functions --- #
