@@ -21,11 +21,11 @@ class SUMMARY_FORMAT(Enum):
     MARKDOWN = 1
     # JSON = 2
 
+
 # --- Create bio data json--- #
 
-def save_info_json(
-    cfg, names_info
-):
+
+def save_info_json(cfg, names_info):
     # Convert to JSON
     json_output = json.dumps(names_info, indent=4)
 
@@ -33,8 +33,9 @@ def save_info_json(
     os.makedirs(os.path.dirname(f"{cfg.author_info_file}"), exist_ok=True)
 
     # Save to a file
-    with open(f"{cfg.author_info_file}", 'w') as json_file:
+    with open(f"{cfg.author_info_file}", "w") as json_file:
         json.dump(names_info, json_file, indent=4)
+
 
 # --- Info Gathering Functions --- #
 
